@@ -1,0 +1,7 @@
+1) Git install
+2) composer install
+3) git clone <repo_name>
+4) cd <project_name>
+5) composer install
+6) copy .env.example file and rename that new file to .env
+7) generate the key via command php artisan key:generate

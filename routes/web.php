@@ -27,3 +27,17 @@ Route::get('/my-home', function () {
 Route::get('/my-home', function () {
     return "This home page is latest.";
 });
+
+
+//Route::get('/URI','controller@function_name');
+
+/*Route::get('/employee/get','EmployeeController@get');
+Route::get('/employee/update','');
+Route::get('/employee/create','');
+Route::get('/employee/delete','');*/
+
+Route::get('/employee/get/{id}','EmployeeController@get');
+Route::get('/employee/all','EmployeeController@all');
+//Route::get('/employee/auth/{username}/{password}','EmployeeController@checkAuth');
+
+Route::post('/employee/auth','EmployeeController@checkAuth');
