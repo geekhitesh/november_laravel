@@ -41,9 +41,9 @@ class EmployeeController extends Controller
 			if($emp["id"] == $id)
 			{
 				 if($emp["role"]=="ceo") {
-					 return view('employeeCEO');
+					return view('employeeCEO',with(compact('emp')));
 				 }else if($emp["role"]=="developer"){
-					 return view('employeeDeveloper');
+					 return view('employeeDeveloper',with(compact('emp')));
 				 }else if($emp["role"]=="admin") {
 					 return view('employeeAdmin');
 				 }else {
@@ -94,12 +94,20 @@ class EmployeeController extends Controller
 		$empList = array(array("id" => 1,
 		                       "name" =>"hitesh",
 							   "role" =>"admin"),
-		                 array("id" => 2,
+						 array("id" => 2,
 		                       "name" =>"rajat",
-							   "role" =>"developer"),
+							   "role" =>"developer",
+							   "hobbies" => array("writing",
+							                      "singing",
+												  "dancing")
+						       ),
 						 array("id" => 3,
 		                       "name" =>"akash",
-							   "role" =>"ceo"),
+							   "role" =>"ceo",
+							   "hobbies" => array("swimming",
+							                      "reading",
+												  "cricket")
+						       ),
 						array("id" => 4,
 		                       "name" =>"Avnish",
 							   "role" =>"cfo"));
