@@ -22,5 +22,9 @@ class VerifyCsrfToken extends Middleware
         //
 		'employee/auth',
 		'calc/sum',
+		'employee/create',
+		'employee/get',
+		'employee/update',
+		'employee/delete',
     ];
 }

@@ -3,115 +3,64 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Employee;
 
 class EmployeeController extends Controller
 {
-    // We map one URL / URI to one operation.
-	// one operation -> one controller function
-	// one uri -> one controller function in Routes
-	
-	private $employeeList;
-	
+
 	public function __construct() {
-		$this->employeeList = array("Hitesh",
-		                      "Rajat",
-							  "Akash",
-							  "Dheeraj",
-							  "Karan");
 		
+	}
+	
+	public function get($id) {
+		$employee = Employee::find($id);
+		
+		//$address = $employee->address_book;
+		//echo $address->id;
+		//return $employee;
+		
+		$phones = $employee->phone;
+		
+		return $phones;
 	}
 	
 	public function all() {
 		
-		
-		//print_r($this->employeeList);
-		
-		//return $this->getEmployeeList();
-		
-		$empList = $this->getEmployeeList();
-		
-		return view('employeeList',with(compact('empList')));
 	}
 	
-	public function get($id) {
+	public function create(Request $request) {
 		
-		$empList = $this->getEmployeeList();
+		$name = $request->input('name');
+		$employee = new Employee();
 		
-		foreach($empList as $emp) {
-			if($emp["id"] == $id)
-			{
-				 if($emp["role"]=="ceo") {
-					return view('employeeCEO',with(compact('emp')));
-				 }else if($emp["role"]=="developer"){
-					 return view('employeeDeveloper',with(compact('emp')));
-				 }else if($emp["role"]=="admin") {
-					 return view('employeeAdmin');
-				 }else {
-					 return "No role defined for the user";
-				 }
-			}
-		}
+		$employee->name = $name;
 		
-		return "No employee found with id:$id";
+		$employee->save();
+		
+		return $employee;
 		
 	}
 	
-	public function update($record) {
-		//TODO
-	}
-	
-	public function create($record) {
-		//TODO
-	}
-	
-	public function remove($id) {
-		//TODO
-	}
-	
-	/*public function checkAuth($username,$password) {
-		if($username=="hitesh" && $password=="ahuja"){
-			return "authenticated";
-		}else {
-			return "try again";
-		}
-	}*/
-	
-	public function checkAuth(Request $request) {
+	public function update(Request $request) {
+		$id = $request->input('id');
+		$name = $request->input('name');
 		
-
+		$employee = Employee::find($id);
+		$employee->name = $name;
+		$employee->save();
 		
-		$username = $request->input('username');
-		$password = $request->input('password');
-		
-		if($username=="hitesh" && $password=="ahuja"){
-			return "authenticated";
-		}else {
-			return "try again";
-		}
+		return $employee;
 	}
 	
-	private function getEmployeeList() {
-		$empList = array(array("id" => 1,
-		                       "name" =>"hitesh",
-							   "role" =>"admin"),
-						 array("id" => 2,
-		                       "name" =>"rajat",
-							   "role" =>"developer",
-							   "hobbies" => array("writing",
-							                      "singing",
-												  "dancing")
-						       ),
-						 array("id" => 3,
-		                       "name" =>"akash",
-							   "role" =>"ceo",
-							   "hobbies" => array("swimming",
-							                      "reading",
-												  "cricket")
-						       ),
-						array("id" => 4,
-		                       "name" =>"Avnish",
-							   "role" =>"cfo"));
-							   
-		return $empList;					   
+	public function delete() {
+		
 	}
+	
+	public function projects($id) {
+		$employee = Employee::find($id);
+		$projects = $employee->project;
+		
+		return $projects;
+	}
+	
 }

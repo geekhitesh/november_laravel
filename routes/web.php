@@ -16,36 +16,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about-us', function () {
-    return "Hi this is about us.";
-});
-
-Route::get('/my-home', function () {
-    return view('home');
-});
-
-Route::get('/my-home', function () {
-    return "This home page is latest.";
-});
-
-
-//Route::get('/URI','controller@function_name');
-
-/*Route::get('/employee/get','EmployeeController@get');
-Route::get('/employee/update','');
-Route::get('/employee/create','');
-Route::get('/employee/delete','');*/
-
 Route::get('/employee/get/{id}','EmployeeController@get');
-Route::get('/employee/all','EmployeeController@all');
-//Route::get('/employee/auth/{username}/{password}','EmployeeController@checkAuth');
+Route::post('/employee/update','EmployeeController@update');
+Route::post('/employee/create','EmployeeController@create');
+Route::get('/employee/projects/{id}','EmployeeController@projects');
+//Route::get('/employee/delete','');
 
-Route::post('/employee/auth','EmployeeController@checkAuth');
+Route::get('address/show/{id}','AddressController@show');
 
-Route::get('/calculate/sum','GetController@sum');
-
-Route::post('/calc/sum','GetController@sum');
+Route::get('address/show-employee/{id}','AddressController@showEmployee');
 
 
-Route::get('post/get/{id}','PostController@get');
-Route::get('post/all','PostController@all');
+Route::get('employee-by-phone/{id}','PhoneController@employee');

@@ -1,0 +1,5 @@
+1) Create model and migration in single command
+	php artisan make:model Phone -m
+
+2) Create Controller as Resource with all functions.
+	php artisan make:controller AddressController --resource
