@@ -15,6 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/welcome', function() {
+	return "Hello World";
+});
+
+
+
+
+
+Route::middleware(['custom_auth'])->group(function () {
+
+	Route::get('/auth1', function() {
+		return "Hello World";
+	});
+	
+
+	Route::get('/new-form', function() {
+		return "Hello World";
+	});
+});
 
 Route::get('/employee/get/{id}','EmployeeController@get');
 Route::post('/employee/update','EmployeeController@update');
@@ -28,3 +47,6 @@ Route::get('address/show-employee/{id}','AddressController@showEmployee');
 
 
 Route::get('employee-by-phone/{id}','PhoneController@employee');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
