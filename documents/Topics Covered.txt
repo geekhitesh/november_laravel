@@ -1,0 +1,10 @@
+1) Controllers
+2) Views
+3) Migrations
+4) Model
+5) Auth
+6) Blade
+7) Middleware
+8) Routing
+9) Logging
+10) Events, Listeners, Handlers

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 //use Log;
+use App\Events\EmployeeCreated;
 
 use Auth;
 
@@ -12,7 +13,7 @@ class EmployeeController extends Controller
 {
 
 	public function __construct() {
-		$this->middleware('auth');
+		//$this->middleware('auth');
 	}
 	
 	public function get($id) {
@@ -51,6 +52,7 @@ class EmployeeController extends Controller
 		
 		$employee->save();
 		
+		event(new EmployeeCreated($employee));
 		
 		return $employee;
 		

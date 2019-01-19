@@ -1,3 +1,4 @@
-1) Middleware
-2) Auth in laravel
-4) Logging
+1) Cache
+2) Socialite
+3) oauth
+4) how to call 3rd party API using guzzlehttpclient

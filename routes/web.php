@@ -37,7 +37,7 @@ Route::middleware(['custom_auth'])->group(function () {
 
 Route::get('/employee/get/{id}','EmployeeController@get');
 Route::post('/employee/update','EmployeeController@update');
-Route::post('/employee/create','EmployeeController@create');
+Route::get('/employee/create','EmployeeController@create');
 Route::get('/employee/projects/{id}','EmployeeController@projects');
 //Route::get('/employee/delete','');
 
@@ -50,3 +50,16 @@ Route::get('employee-by-phone/{id}','PhoneController@employee');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('student',function() {
+	return view('student.home');
+});
+
+Route::get('student/register',function() {
+	return view('student.register');
+});
+
+Route::post('student/create','StudentController@create');
+Route::get('student/get/{id}','StudentController@get');
