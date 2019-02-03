@@ -63,3 +63,10 @@ Route::get('student/register',function() {
 
 Route::post('student/create','StudentController@create');
 Route::get('student/get/{id}','StudentController@get');
+
+
+Route::get('/cache/employee-list','CacheController@getEmpList');
+
+Route::get('/cache/emp-list','CacheController@getCacheData');
+
+Route::get('/guzzle/emplist','GuzzleController@getDataFromApi');

@@ -1,4 +1,5 @@
 1) Cache
-2) Socialite
+2) Socialite - https://scotch.io/tutorials/laravel-social-authentication-with-socialite
 3) oauth
 4) how to call 3rd party API using guzzlehttpclient
+5) Admin LTE - https://github.com/acacha/adminlte-laravel
